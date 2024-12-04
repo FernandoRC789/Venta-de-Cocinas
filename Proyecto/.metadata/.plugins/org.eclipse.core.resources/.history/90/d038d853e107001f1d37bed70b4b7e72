@@ -1,0 +1,166 @@
+package proyectoParte;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Vender extends JFrame implements ActionListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 709234680493959064L;
+	private JPanel contentPane;
+	private JLabel lblNewLabel;
+	private JComboBox<?> cboModelo;
+	private JLabel lblPrecio;
+	private JTextField txtPrecio;
+	private JLabel lblNewLabel_1;
+	private JTextField txtCantidad;
+	private JScrollPane scrollPane;
+	private JTextArea textArea;
+	private JButton btnVender;
+	private JButton btnCerrar;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Vender frame = new Vender();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Vender() {
+		setTitle("Vender");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 691, 481);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		lblNewLabel = new JLabel("Modelo");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel.setBounds(27, 46, 74, 30);
+		contentPane.add(lblNewLabel);
+		
+		cboModelo = new JComboBox();
+		cboModelo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		cboModelo.setModel(new DefaultComboBoxModel(new String[] {"Mabe EMP6120PG0", "Indurama Parma", "Sole COSOL027", "Coldex CX602", "Reco Dakota"}));
+		cboModelo.setBounds(111, 46, 172, 30);
+		contentPane.add(cboModelo);
+		
+		lblPrecio = new JLabel("Precio");
+		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblPrecio.setBounds(27, 97, 74, 30);
+		contentPane.add(lblPrecio);
+		
+		txtPrecio = new JTextField();
+		txtPrecio.setEditable(false);
+		txtPrecio.addActionListener(this);
+		txtPrecio.setBounds(133, 97, 130, 30);
+		contentPane.add(txtPrecio);
+		txtPrecio.setColumns(10);
+		
+		lblNewLabel_1 = new JLabel("Cantidad");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_1.setBounds(27, 149, 88, 30);
+		contentPane.add(lblNewLabel_1);
+		
+		txtCantidad = new JTextField();
+		txtCantidad.setColumns(10);
+		txtCantidad.setBounds(133, 149, 130, 30);
+		contentPane.add(txtCantidad);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(27, 216, 639, 221);
+		contentPane.add(scrollPane);
+		
+		textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
+		
+		btnVender = new JButton("Vender");
+		btnVender.addActionListener(this);
+		btnVender.setFont(new Font("Constantia", Font.BOLD, 16));
+		btnVender.setBackground(Color.CYAN);
+		btnVender.setBounds(495, 43, 150, 33);
+		contentPane.add(btnVender);
+		
+		btnCerrar = new JButton("Cerrar");
+		btnCerrar.addActionListener(this);
+		btnCerrar.setFont(new Font("Constantia", Font.BOLD, 16));
+		btnCerrar.setBackground(Color.CYAN);
+		btnCerrar.setBounds(495, 105, 150, 33);
+		contentPane.add(btnCerrar);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnVender) {
+			actionPerformedBtnVender(e);
+		}
+		if (e.getSource() == txtPrecio) {
+			actionPerformedTxtPrecio(e);
+		}
+		if (e.getSource() == btnCerrar) {
+			actionPerformedBtnCerrar(e);
+		}
+
+	}
+	protected void actionPerformedBtnCerrar(ActionEvent e) {
+		dispose();
+	}
+	String modelo0 = "Mabe EMP6120PG0";
+	double precio0 = 949.0;
+	double fondo0 = 58.6;
+	double ancho0 = 60.0;
+	double alto0 = 91.0;
+	int quemadores0 = 4;
+	protected void actionPerformedTxtPrecio(ActionEvent e) {
+		//txtPrecio.setEditable(false);
+		//txtPrecio.setEnabled(false);
+		// Datos mínimos de la primera cocina
+
+		int modelo;
+		double pre;
+		modelo = cboModelo.getSelectedIndex();
+		switch(modelo) {
+		case 0:
+			pre = precio0;
+			break;
+		default:
+			pre = alto0;
+			
+			
+		}
+
+	}
+	
+		
+	protected void actionPerformedBtnVender(ActionEvent e) {
+	}
+}

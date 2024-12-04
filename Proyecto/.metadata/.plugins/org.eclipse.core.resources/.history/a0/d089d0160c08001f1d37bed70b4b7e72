@@ -1,0 +1,171 @@
+package proyectoParte;
+
+4import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import java.awt.Color;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+//import proyectoParte.Vender; para usar en el reporte  los datos de las otras variables
+public class GenerarReportes extends JFrame implements ActionListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7120476291400489316L;
+	private JPanel contentPane;
+	private JLabel lblNewLabel;
+	private JComboBox<?> cboModelo;
+	private JButton btnCerrar;
+	private JScrollPane scrollPane;
+	private JTextArea txtS;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					GenerarReportes frame = new GenerarReportes();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public GenerarReportes() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 778, 544);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		lblNewLabel = new JLabel("Tipo de Reporte");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel.setBounds(22, 39, 138, 35);
+		contentPane.add(lblNewLabel);
+		
+		cboModelo = new JComboBox();
+		cboModelo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		cboModelo.addActionListener(this);
+		cboModelo.setModel(new DefaultComboBoxModel(new String[] {"Ventas por modelo", "Ventas en relaci\u00F3n a la venta \u00F3ptima", "Precios en relaci\u00F3n al precio promedio", "Promedios, menores y mayores"}));
+		cboModelo.setBounds(170, 39, 246, 35);
+		contentPane.add(cboModelo);
+		
+		btnCerrar = new JButton("Cerrar");
+		btnCerrar.addActionListener(this);
+		btnCerrar.setFont(new Font("Constantia", Font.BOLD, 16));
+		btnCerrar.setBackground(Color.CYAN);
+		btnCerrar.setBounds(604, 10, 150, 33);
+		contentPane.add(btnCerrar);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 87, 704, 408);
+		contentPane.add(scrollPane);
+		
+		txtS = new JTextArea();
+		scrollPane.setViewportView(txtS);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnCerrar) {
+			actionPerformedBtnCerrar(e);
+		}
+		if (e.getSource() == cboModelo) {
+			actionPerformedComboBox(e);
+		}
+	}
+	protected void actionPerformedComboBox(ActionEvent e) {
+		//declarando variables
+		int modelo;
+		//entrada de datos
+		modelo=cboModelo.getSelectedIndex();
+		//proceso de calculo
+		//forma normal
+		switch(modelo){
+		case 0:
+			txtS.setText("VENTAS POR MODELO\r\n"
+					+ "Modelo : Mabe EMP6120PG0\r\n"
+					+ "Cantidad de ventas : 2\r\n"
+					+ "Cantidad de unidades vendidas : 14\r\n"
+					+ "Importe total vendido : S/.3511.30\r\n"
+					+ "Aporte a la cuota diaria : 7.02%\r\n"
+					+ "Modelo : Indurama Parma\r\n"
+					+ "Cantidad de ventas : 2\r\n"
+					+ "Cantidad de unidades vendidas : 21\r\n"
+					+ "Importe total vendido : S/.6043.95\r\n"
+					+ "Aporte a la cuota diaria : 12.09%\r\n"
+					+ "Modelo : Sole COSOL027\r\n"
+					+ "Cantidad de ventas : 2\r\n"
+					+ "Cantidad de unidades vendidas : 10\r\n"
+					+ "Importe total vendido : S/.7713.75\r\n"
+					+ "Aporte a la cuota diaria : 15.43%\r\n"
+					+ "Modelo : Coldex CX602\r\n"
+					+ "Cantidad de ventas : 2\r\n"
+					+ "Cantidad de unidades vendidas : 2\r\n"
+					+ "Importe total vendido : S/.1163.65\r\n"
+					+ "Aporte a la cuota diaria : 2.33%\r\n"
+					+ "Modelo : Reco Dakota\r\n"
+					+ "Cantidad de ventas : 2\r\n"
+					+ "Cantidad de unidades vendidas : 3\r\n"
+					+ "Importe total vendido : S/.2355.98\r\n"
+					+ "Aporte a la cuota diaria : 4.71%");
+			break;
+		case 1:
+			txtS.setText("VENTAS EN RELACIÓN A LA VENTA ÓPTIMA\r\n"
+					+ "Modelo : Mabe EMP6120PG0\r\n"
+					+ "Cantidad de unidades vendidas : 14(4 más que la cantidad óptima)\r\n"
+					+ "Modelo : Indurama Parma\r\n"
+					+ "Cantidad de unidades vendidas : 21(11 más que la cantidad óptima)\r\n"
+					+ "Modelo : Sole COSOL027\r\n"
+					+ "Cantidad de unidades vendidas : 10(igual a la cantidad óptima)\r\n"
+					+ "Modelo : Coldex CX602\r\n"
+					+ "Cantidad de unidades vendidas : 2(8 menos que la cantidad óptima)\r\n"
+					+ "Modelo : Reco Dakota\r\n"
+					+ "Cantidad de unidades vendidas : 3(7 menos que la cantidad óptima)");
+			break;
+		case 2:
+			txtS.setText("PRECIOS EN RELACIÓN AL PRECIO PROMEDIO\r\n"
+					+ "Modelo : Mabe EMP6120PG0\r\n"
+					+ "Precio : S/. 949.0(Mayor al promedio)\r\n"
+					+ "Modelo : Indurama Parma\r\n"
+					+ "Precio : S/. 1089.0(Mayor al promedio)\r\n"
+					+ "Modelo : Sole COSOL027\r\n"
+					+ "Precio : S/. 850.0(Menor al promedio)\r\n"
+					+ "Modelo : Coldex CX602\r\n"
+					+ "Precio : S/. 629.0(Menor al promedio)\r\n"
+					+ "Modelo : Reco Dakota\r\n"
+					+ "Precio : S/. 849.0(Menor al promedio");
+			break;
+		default:
+			txtS.setText("PROMEDIOS, MENORES Y MAYORES\r\n"
+					+ "Precio promedio : S/. 873.2\r\n"
+					+ "Precio menor : S/. 629.0\r\n"
+					+ "Precio mayor : S/. 1089.0\r\n"
+					+ "Ancho promedio : 67.4 cm\r\n"
+					+ "Ancho menor : 60.0 cm\r\n"
+					+ "Ancho mayor : 80.0 c");
+				//!!!!! mejorar linea de codigo, averiguar llamando a las variables globales
+				}		
+	}
+	protected void actionPerformedBtnCerrar(ActionEvent e) {
+		dispose();
+	}
+}

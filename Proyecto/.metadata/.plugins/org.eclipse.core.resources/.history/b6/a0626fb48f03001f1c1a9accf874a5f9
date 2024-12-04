@@ -1,0 +1,115 @@
+package proyectoParte;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class PaginaPrincipal extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1675293076168019982L;
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PaginaPrincipal frame = new PaginaPrincipal();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public PaginaPrincipal() {
+		setTitle("Tienda 1.0");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 879, 469);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mArchivo = new JMenu("Archivo");
+		menuBar.add(mArchivo);
+		
+		JMenuItem oSalir = new JMenuItem("SALIR");
+		oSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		mArchivo.add(oSalir);
+		
+		JMenu mMantenimiento = new JMenu("Mantenimiento");
+		menuBar.add(mMantenimiento);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Consulta Cocina");
+		mMantenimiento.add(mntmNewMenuItem_1);
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Modificar Cocina");
+		mMantenimiento.add(mntmNewMenuItem_2);
+		
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Listar Cocina");
+		mMantenimiento.add(mntmNewMenuItem_3);
+		
+		JMenu mVentas = new JMenu("Ventas");
+		menuBar.add(mVentas);
+		
+		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Vender");
+		mVentas.add(mntmNewMenuItem_4);
+		
+		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Generar Reportes");
+		mVentas.add(mntmNewMenuItem_5);
+		
+		JMenu mConfiguracion = new JMenu("Configuraci\u00F3n");
+		menuBar.add(mConfiguracion);
+		
+		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Configurar descuentos");
+		mConfiguracion.add(mntmNewMenuItem_6);
+		
+		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Configurar obsequios");
+		mConfiguracion.add(mntmNewMenuItem_7);
+		
+		JMenuItem mntmNewMenuItem_8 = new JMenuItem("Configurar cantidad \u00F3ptima");
+		mConfiguracion.add(mntmNewMenuItem_8);
+		
+		JMenuItem mntmNewMenuItem_9 = new JMenuItem("Configurar cuota diaria");
+		mConfiguracion.add(mntmNewMenuItem_9);
+		
+		JMenu mAyuda = new JMenu("Ayuda");
+		menuBar.add(mAyuda);
+		
+		JMenuItem oTienda = new JMenuItem("Acerca de Tienda");
+		oTienda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				acercaDeTienda d= new acercaDeTienda();
+				//d.setLocationReservationTo(this);
+				d.setVisible(true);
+			}
+		});
+		mAyuda.add(oTienda);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+	}
+
+}

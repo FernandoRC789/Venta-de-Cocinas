@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\rodri\Documentos casa\NICK\Ciclo 1\introduccionALaAlgoritmia\GRUPO_1\Nick Cibertec proyecto\Proyecto\.metadata\.plugins\org.eclipse.jdt.core
+4010356562.index
+1423076486.index
+1865797976.index

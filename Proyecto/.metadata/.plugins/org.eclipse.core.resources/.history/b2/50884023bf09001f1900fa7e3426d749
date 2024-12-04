@@ -1,0 +1,91 @@
+package proyectoParte;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Clase3_05 extends JFrame implements ActionListener {
+
+	private JPanel contentPane;
+	private JButton btnProcesar;
+	private JScrollPane scrollPane;
+	private JTextArea txtS;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Clase3_05 frame = new Clase3_05();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Clase3_05() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		btnProcesar = new JButton("PROCESAR");
+		btnProcesar.addActionListener(this);
+		btnProcesar.setBounds(73, 10, 241, 44);
+		contentPane.add(btnProcesar);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 77, 403, 176);
+		contentPane.add(scrollPane);
+		
+		txtS = new JTextArea();
+		scrollPane.setViewportView(txtS);
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnProcesar) {
+			actionPerformedBtnProcesar(e);
+		}
+	}
+	protected void actionPerformedBtnProcesar(ActionEvent e) {
+		/*int num = 5, c = 0, sum = 0;
+		txtS.setText("");
+		while (c<10) {
+			
+			txtS.append(num+"\n");
+			sum+=num;
+			num+=7;
+			c++;
+		}*/
+		int num1 = 3,num2 = 2, sum = 0, cont =0;
+		txtS.setText("");
+		while (cont<10) {
+			txtS.setText(num1+"/"+num2);
+			//sum+=num1;
+			//sum+=num2;
+			num1+=4;
+			num2+=3;
+			cont++;
+		}
+		//txtS.setText("Suma : "+ sum);
+		
+		
+		
+	}
+}

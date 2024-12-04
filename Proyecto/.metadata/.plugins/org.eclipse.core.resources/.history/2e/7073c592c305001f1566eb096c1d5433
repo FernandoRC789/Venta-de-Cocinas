@@ -1,0 +1,165 @@
+package proyectoParte;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class listadoDeCocina extends JFrame implements ActionListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6194797605871545228L;
+	private JPanel contentPane;
+	private JScrollPane scrollPane;
+	private JTextArea txtS;
+	private JButton btnCerrar;
+	private JButton btnListar;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					listadoDeCocina frame = new listadoDeCocina();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public listadoDeCocina() {
+		setTitle("Listado de Cocinas");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 720, 529);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 10, 690, 416);
+		contentPane.add(scrollPane);
+		
+		txtS = new JTextArea();
+		txtS.setFont(new Font("Lucida Fax", Font.BOLD, 17));
+		scrollPane.setViewportView(txtS);
+		
+		btnCerrar = new JButton("Cerrar");
+		btnCerrar.addActionListener(this);
+		btnCerrar.setFont(new Font("Constantia", Font.BOLD, 16));
+		btnCerrar.setBackground(Color.CYAN);
+		btnCerrar.setBounds(37, 449, 150, 33);
+		contentPane.add(btnCerrar);
+		
+		btnListar = new JButton("Listar");
+		btnListar.addActionListener(this);
+		btnListar.setFont(new Font("Constantia", Font.BOLD, 16));
+		btnListar.setBackground(Color.CYAN);
+		btnListar.setBounds(476, 449, 150, 33);
+		contentPane.add(btnListar);
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnListar) {
+			actionPerformedBtnListar(e);
+		}
+		if (e.getSource() == btnCerrar) {
+			actionPerformedBtnCerrar(e);
+		}
+	}
+	protected void actionPerformedBtnCerrar(ActionEvent e) {
+		dispose();
+	}
+	// Datos mínimos de la primera cocina
+		public static String modelo0 = "Mabe EMP6120PG0";
+		public static double precio0 = 949.0;
+		public static double fondo0 = 58.6;
+		public static double ancho0 = 60.0;
+		public static double alto0 = 91.0;
+		public static int quemadores0 = 4;
+		// Datos mínimos de la segunda cocina
+		public static String modelo1 = "Indurama Parma";
+		public static double precio1 = 1089.0;
+		public static double ancho1 = 80.0;
+		public static double alto1 = 94.0;
+		public static double fondo1 = 67.5;
+		public static int quemadores1 = 6;
+		// Datos mínimos de la tercera cocina
+		public static String modelo2 = "Sole COSOL027";
+		public static double precio2 = 850.0;
+		public static double ancho2 = 60.0;
+		public static double alto2 = 90.0;
+		public static double fondo2 = 50.0;
+		public static int quemadores2 = 4;
+		// Datos mínimos de la cuarta cocina
+		public static String modelo3 = "Coldex CX602";
+		public static double precio3 = 629.0;
+		public static double ancho3 = 61.6;
+		public static double alto3 = 95.0;
+		public static double fondo3 = 51.5;
+		public static int quemadores3 = 5;
+		// Datos mínimos de la quinta cocina
+		public static String modelo4 = "Reco Dakota";
+		public static double precio4 = 849.0;
+		public static double ancho4 = 75.4;
+		public static double alto4 = 94.5;
+		public static double fondo4 = 66.0;
+		public static int quemadores4 = 5;
+	protected void actionPerformedBtnListar(ActionEvent e) {
+		txtS.setText("LISTADO DE COCINAS"+ "\n"+ "\n");
+		//cocina 0
+		txtS.append("Modelo              : "+ modelo0+"\n");
+		txtS.append("Precio                 : "+precio0+"\n");
+		txtS.append("Profundidad       : "+fondo0+"\n");
+		txtS.append("Ancho                : "+ancho0+"\n");
+		txtS.append("Alto                   : "+alto0+"\n");
+		txtS.append("Quemadores           : "+quemadores0+"\n"+"\n"+"\n");
+		//cocina1
+		txtS.append("Modelo            : "+ modelo1+"\n");
+		txtS.append("Precio            : "+precio1+"\n");
+		txtS.append("Profundidad       : "+fondo1+"\n");
+		txtS.append("Ancho             : "+ancho1+"\n");
+		txtS.append("Alto              : "+alto1+"\n");
+		txtS.append("Quemadores        : "+quemadores1+"\n"+"\n"+"\n");
+		//cocina2
+		txtS.append("Modelo        : "+ modelo2+"\n");
+		txtS.append("Precio        : "+precio2+"\n");
+		txtS.append("Profundidad   : "+fondo2+"\n");
+		txtS.append("Ancho         : "+ancho2+"\n");
+		txtS.append("Alto          : "+alto2+"\n");
+		txtS.append("Quemadores    : "+quemadores2+"\n"+"\n"+"\n");
+		//cocina3
+		txtS.append("Modelo        : "+ modelo3+"\n");
+		txtS.append("Precio        : "+precio3+"\n");
+		txtS.append("Profundidad   : "+fondo3+"\n");
+		txtS.append("Ancho         : "+ancho3+"\n");
+		txtS.append("Alto          : "+alto3+"\n");
+		txtS.append("Quemadores    : "+quemadores3+"\n"+"\n"+"\n");
+		//cocina4
+		txtS.append("Modelo        : "+ modelo4+"\n");
+		txtS.append("Precio        : "+precio4+"\n");
+		txtS.append("Profundidad   : "+fondo4+"\n");
+		txtS.append("Ancho         : "+ancho4+"\n");
+		txtS.append("Alto          : "+alto4+"\n");
+		txtS.append("Quemadores    : "+quemadores4+"\n"+"\n"+"\n");
+
+		
+	}
+}

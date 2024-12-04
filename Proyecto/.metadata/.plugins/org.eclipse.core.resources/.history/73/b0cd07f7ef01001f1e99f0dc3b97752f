@@ -1,0 +1,98 @@
+package proyectoParte;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+@SuppressWarnings("serial")
+public class acercaDeTienda extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8856099028397978785L;
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					acercaDeTienda frame = new acercaDeTienda();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public acercaDeTienda() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 729, 466);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Tienda 1.0");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 30));
+		lblNewLabel.setBounds(265, 10, 169, 52);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Autores");
+		lblNewLabel_1.setFont(new Font("Arial Black", Font.BOLD, 14));
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(298, 72, 100, 21);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Autor 1");
+		lblNewLabel_2.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblNewLabel_2.setBounds(169, 125, 62, 28);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("Autor 2");
+		lblNewLabel_2_1.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblNewLabel_2_1.setBounds(169, 163, 62, 28);
+		contentPane.add(lblNewLabel_2_1);
+		
+		JLabel lblNewLabel_2_1_1 = new JLabel("Autor 3");
+		lblNewLabel_2_1_1.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblNewLabel_2_1_1.setBounds(169, 201, 62, 28);
+		contentPane.add(lblNewLabel_2_1_1);
+		
+		JLabel lblNewLabel_2_1_1_1 = new JLabel("Autor 4");
+		lblNewLabel_2_1_1_1.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblNewLabel_2_1_1_1.setBounds(169, 239, 62, 28);
+		contentPane.add(lblNewLabel_2_1_1_1);
+		
+		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("Autor 5");
+		lblNewLabel_2_1_1_1_1.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblNewLabel_2_1_1_1_1.setBounds(169, 274, 62, 28);
+		contentPane.add(lblNewLabel_2_1_1_1_1);
+		
+		JButton btnCerrarAyuda = new JButton("Cerrar");
+		btnCerrarAyuda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnCerrarAyuda.setFont(new Font("Berlin Sans FB Demi", Font.BOLD, 18));
+		btnCerrarAyuda.setBounds(244, 358, 202, 42);
+		contentPane.add(btnCerrarAyuda);
+	}
+}

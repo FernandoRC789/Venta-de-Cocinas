@@ -1,0 +1,72 @@
+package proyectoParte;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import proyectoParte.Vender;
+import java.awt.event.WindowStateListener;
+import java.awt.event.WindowEvent;
+import proyectoParte.Vender;
+
+public class avanceDeVentas extends JFrame implements WindowStateListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8076529481208055591L;
+	private JPanel contentPane;
+	private JScrollPane scrollPane;
+	private JTextArea txtS;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					avanceDeVentas frame = new avanceDeVentas();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public avanceDeVentas() {
+		addWindowStateListener(this);
+		setTitle("Avance de Ventas");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 613, 349);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 10, 579, 292);
+		contentPane.add(scrollPane);
+		
+		txtS = new JTextArea();
+		scrollPane.setViewportView(txtS);
+	}
+
+	public void windowStateChanged(WindowEvent e) {
+		if (e.getSource() == this) {
+			windowStateChangedThis(e);
+		}
+	}
+	protected void windowStateChangedThis(WindowEvent e) {
+		txtS.setText("Venta N°5"+"\n");
+		txtS.append("Importe Total General Acumulado: "+ ipag);
+	}
+}

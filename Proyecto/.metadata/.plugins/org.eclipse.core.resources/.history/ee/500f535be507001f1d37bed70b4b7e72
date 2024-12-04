@@ -1,0 +1,217 @@
+package proyectoParte;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Vender extends JFrame implements ActionListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 709234680493959064L;
+	private JPanel contentPane;
+	private JLabel lblNewLabel;
+	private JComboBox<?> cboModelo;
+	private JLabel lblPrecio;
+	private JTextField txtPrecio;
+	private JLabel lblNewLabel_1;
+	private JTextField txtCantidad;
+	private JScrollPane scrollPane;
+	private JTextArea textArea;
+	private JButton btnVender;
+	private JButton btnCerrar;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Vender frame = new Vender();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Vender() {
+		setTitle("Vender");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 691, 481);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		lblNewLabel = new JLabel("Modelo");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel.setBounds(27, 46, 74, 30);
+		contentPane.add(lblNewLabel);
+		
+		cboModelo = new JComboBox();
+		cboModelo.addActionListener(this);
+		cboModelo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		cboModelo.setModel(new DefaultComboBoxModel(new String[] {"Mabe EMP6120PG0", "Indurama Parma", "Sole COSOL027", "Coldex CX602", "Reco Dakota"}));
+		cboModelo.setBounds(111, 46, 172, 30);
+		contentPane.add(cboModelo);
+		
+		lblPrecio = new JLabel("Precio");
+		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblPrecio.setBounds(27, 97, 74, 30);
+		contentPane.add(lblPrecio);
+		
+		txtPrecio = new JTextField();
+		txtPrecio.addActionListener(this);
+		txtPrecio.setBounds(133, 97, 130, 30);
+		contentPane.add(txtPrecio);
+		txtPrecio.setColumns(10);
+		
+		lblNewLabel_1 = new JLabel("Cantidad");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_1.setBounds(27, 149, 88, 30);
+		contentPane.add(lblNewLabel_1);
+		
+		txtCantidad = new JTextField();
+		txtCantidad.setColumns(10);
+		txtCantidad.setBounds(133, 149, 130, 30);
+		contentPane.add(txtCantidad);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(27, 216, 639, 221);
+		contentPane.add(scrollPane);
+		
+		textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
+		
+		btnVender = new JButton("Vender");
+		btnVender.addActionListener(this);
+		btnVender.setFont(new Font("Constantia", Font.BOLD, 16));
+		btnVender.setBackground(Color.CYAN);
+		btnVender.setBounds(495, 43, 150, 33);
+		contentPane.add(btnVender);
+		
+		btnCerrar = new JButton("Cerrar");
+		btnCerrar.addActionListener(this);
+		btnCerrar.setFont(new Font("Constantia", Font.BOLD, 16));
+		btnCerrar.setBackground(Color.CYAN);
+		btnCerrar.setBounds(495, 105, 150, 33);
+		contentPane.add(btnCerrar);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnVender) {
+			actionPerformedBtnVender(e);
+		}
+		if (e.getSource() == txtPrecio) {
+			actionPerformedTxtPrecio(e);
+		}
+		if (e.getSource() == btnCerrar) {
+			actionPerformedBtnCerrar(e);
+		}
+
+	}
+	protected void actionPerformedBtnCerrar(ActionEvent e) {
+		dispose();
+	}
+	// Datos mínimos de la primera cocina
+	public static String modelo0 = "Mabe EMP6120PG0";
+	public static double precio0 = 949.0;
+	public static double fondo0 = 58.6;
+	public static double ancho0 = 60.0;
+	public static double alto0 = 91.0;
+	public static int quemadores0 = 4;
+	// Datos mínimos de la segunda cocina
+	public static String modelo1 = "Indurama Parma";
+	public static double precio1 = 1089.0;
+	public static double ancho1 = 80.0;
+	public static double alto1 = 94.0;
+	public static double fondo1 = 67.5;
+	public static int quemadores1 = 6;
+	// Datos mínimos de la tercera cocina
+	public static String modelo2 = "Sole COSOL027";
+	public static double precio2 = 850.0;
+	public static double ancho2 = 60.0;
+	public static double alto2 = 90.0;
+	public static double fondo2 = 50.0;
+	public static int quemadores2 = 4;
+	// Datos mínimos de la cuarta cocina
+	public static String modelo3 = "Coldex CX602";
+	public static double precio3 = 629.0;
+	public static double ancho3 = 61.6;
+	public static double alto3 = 95.0;
+	public static double fondo3 = 51.5;
+	public static int quemadores3 = 5;
+	// Datos mínimos de la quinta cocina
+	public static String modelo4 = "Reco Dakota";
+	public static double precio4 = 849.0;
+	public static double ancho4 = 75.4;
+	public static double alto4 = 94.5;
+	public static double fondo4 = 66.0;
+	public static int quemadores4 = 5;
+	// Porcentajes de descuento
+	public static double porcentaje1 = 7.5;
+	public static double porcentaje2 = 10.0;
+	public static double porcentaje3 = 12.5;
+	public static double porcentaje4 = 15.0;
+	// Obsequios
+	public static String obsequio1 = "Cafetera";
+	public static String obsequio2 = "Licuadora";
+	public static String obsequio3 = "Extractor";
+	// Cantidad óptima de unidades vendidas
+	public static int cantidadOptima = 30;
+	// Cuota diaria
+	public static double cuotaDiaria = 75000;
+	protected void actionPerformedTxtPrecio(ActionEvent e) {
+		//txtPrecio.setEditable(false);
+		//txtPrecio.setEnabled(false);
+		int modelo;
+		double pre;
+
+		modelo = cboModelo.getSelectedIndex();
+		pre = Double.parseDouble(txtPrecio.getText());
+		switch(modelo) {
+		case 0:
+			pre= precio0;
+			
+			
+		case 1:
+			pre =  precio1;
+			
+		case 2:
+			pre = precio2;
+			
+		case 3:
+			pre = precio3;
+			
+		default:
+			pre = precio4;
+			
+		}
+	}
+	
+		
+	protected void actionPerformedBtnVender(ActionEvent e) {
+	}
+	
+}

@@ -1,0 +1,302 @@
+package proyectoParte;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
+import proyectoParte.avanceDeVentas;
+
+public class Vender extends JFrame implements ActionListener, ItemListener, MouseListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 709234680493959064L;
+	private JPanel contentPane;
+	private JLabel lblNewLabel;
+	private JComboBox<?> cboModelo;
+	private JLabel lblPrecio;
+	private JLabel lblNewLabel_1;
+	private JTextField txtCantidad;
+	private JScrollPane scrollPane;
+	private JTextArea txtS;
+	private JButton btnVender;
+	private JButton btnCerrar;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Vender frame = new Vender();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Vender() {
+		setTitle("Vender");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 691, 481);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		lblNewLabel = new JLabel("Modelo");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel.setBounds(27, 46, 74, 30);
+		contentPane.add(lblNewLabel);
+		
+		cboModelo = new JComboBox();
+		cboModelo.addItemListener(this);
+		cboModelo.addActionListener(this);
+		cboModelo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		cboModelo.setModel(new DefaultComboBoxModel(new String[] {"Mabe EMP6120PG0", "Indurama Parma", "Sole COSOL027", "Coldex CX602", "Reco Dakota"}));
+		cboModelo.setBounds(111, 46, 172, 30);
+		contentPane.add(cboModelo);
+		
+		lblPrecio = new JLabel("Precio");
+		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblPrecio.setBounds(27, 97, 74, 30);
+		contentPane.add(lblPrecio);
+		
+		lblNewLabel_1 = new JLabel("Cantidad");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_1.setBounds(27, 149, 88, 30);
+		contentPane.add(lblNewLabel_1);
+		
+		txtCantidad = new JTextField();
+		txtCantidad.setColumns(10);
+		txtCantidad.setBounds(133, 149, 130, 30);
+		contentPane.add(txtCantidad);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(27, 216, 639, 221);
+		contentPane.add(scrollPane);
+		
+		txtS = new JTextArea();
+		txtS.setFont(new Font("Garamond", Font.BOLD, 16));
+		scrollPane.setViewportView(txtS);
+		
+		btnVender = new JButton("Vender");
+		btnVender.addMouseListener(this);
+		btnVender.addActionListener(this);
+		btnVender.setFont(new Font("Constantia", Font.BOLD, 16));
+		btnVender.setBackground(Color.CYAN);
+		btnVender.setBounds(495, 43, 150, 33);
+		contentPane.add(btnVender);
+		
+		btnCerrar = new JButton("Cerrar");
+		btnCerrar.addActionListener(this);
+		btnCerrar.setFont(new Font("Constantia", Font.BOLD, 16));
+		btnCerrar.setBackground(Color.CYAN);
+		btnCerrar.setBounds(495, 105, 150, 33);
+		contentPane.add(btnCerrar);
+		
+		txtPrecio = new JTextField();
+		txtPrecio.setEditable(false);
+		txtPrecio.setBounds(133, 95, 128, 32);
+		contentPane.add(txtPrecio);
+		txtPrecio.setColumns(10);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+
+		if (e.getSource() == btnVender) {
+			actionPerformedBtnVender(e);
+		}
+		if (e.getSource() == btnCerrar) {
+			actionPerformedBtnCerrar(e);
+		}
+
+	}
+	protected void actionPerformedBtnCerrar(ActionEvent e) {
+		dispose();
+	}
+	
+	int contadorVentas = 0,canVen0, modelo;
+	double impTot0 ;
+
+	private JTextField txtPrecio;
+		
+	public void itemStateChanged(ItemEvent e) {
+		if (e.getSource() == cboModelo) {
+			itemStateChangedCboModelo(e);
+		}
+	}
+	protected void itemStateChangedCboModelo(ItemEvent e) {
+		//declarando variables
+				int modelo;
+				//entrada de datos
+				modelo = leerModelo();
+				//proceso de calculo
+				switch(modelo){
+				case 0: mostrarPrecio(PaginaPrincipal.precio0);break;
+				case 1: mostrarPrecio(PaginaPrincipal.precio1);break;
+				case 2: mostrarPrecio(PaginaPrincipal.precio2);break;
+				case 3: mostrarPrecio(PaginaPrincipal.precio3);break;
+				default: mostrarPrecio(PaginaPrincipal.precio4);break;
+				//!!!!! mejorar linea de codigo, averiguar llamando a las variables globales
+				}
+	}
+				
+	private int leerModelo() {
+	// TODO Auto-generated method stub
+		return cboModelo.getSelectedIndex();
+		}
+				
+	void mostrarPrecio(double pre) {
+		txtPrecio.setText(pre+"");
+		}
+		
+	
+	
+	protected void actionPerformedBtnVender(ActionEvent e) {
+		int clic = 0;
+
+		//declarando variables
+		int cant;
+		double icom,idesc,precio,ipag;
+		String obs= null;
+		//Declarando metodos CON RETORNO Y VALOR
+		cant = leerCant();
+		precio = leerPrecio();
+		icom = CalcularIcompra(precio,cant);
+		idesc = calcularIDescuento(cant,icom);
+		ipag = calcularIpagar(icom,idesc);
+		obs = CalculandoObsequios(cant);
+		mostrarResultados(precio,cant,icom,idesc,ipag,obs);
+
+		
+	}
+
+
+
+	int leerCant() {
+		return Integer.parseInt(txtCantidad.getText());
+	}
+
+	double leerPrecio() {
+		return 	Double.parseDouble(txtPrecio.getText());
+
+	}
+	double mostrarPrecioModelo(int m) {
+		
+		switch(m) {
+		case 0:  return PaginaPrincipal.precio0;
+		case 1: return PaginaPrincipal.precio1;
+		case 2: return PaginaPrincipal.precio2;
+		case 3: return PaginaPrincipal.precio3;
+		default: return PaginaPrincipal.precio4;
+		}
+	}
+
+	double CalcularIcompra(double p,int c) {
+		return p*c;
+	}
+
+	double calcularIDescuento(int c,double ic) {
+		if(c<5) return ic * 0.01 ;
+		else if (c<=10) return ic * 0.02 ;
+		else if(c<=15) return ic * 0.03 ;
+		else return ic * 0.04 ;
+	}
+
+	double calcularIpagar(double icom,double idesc) {
+		return icom - idesc;
+	}
+
+	String CalculandoObsequios(int c) {
+		if (c == 1) return PaginaPrincipal.obsequio1;
+		else if(c <=5) return PaginaPrincipal.obsequio2;
+		else return PaginaPrincipal.obsequio3;
+	}
+	void efectuarIncrementos(int m,double ip) {
+		switch(m) {
+		case 0: canVen0++;impTot0+=ip;break;
+		}
+		
+	}
+
+	void mostrarResultados(double precio,int c, double icom,double idesc,double ipag, String o) {
+		txtS.setText("BOLETA DE VENTA" + "\n\n");
+		txtS.append("Modelo                      : " + cboModelo.getSelectedItem() + "\n");
+		txtS.append("Precio                        : " +"S/ . " + precio++ + "\n");
+		txtS.append("Cantidad                   : " + "S/ . " + c++ + "\n");
+		txtS.append("Importe Compra       : " + "S/ . " + icom + "\n");
+		txtS.append("Importe descuento   : " + "S/ . " + idesc + "\n");
+		txtS.append("importe pagar          : " + "S/ . " + ipag + "\n");
+		txtS.append("Obsequio                  : " + "S/ . " + o + "\n");
+	
+		
+		contadorVentas++;
+        if (contadorVentas%5==0 ) {
+            // Abre la ventana de alerta
+            avanceDeVentas v = new avanceDeVentas();
+            v.setVisible(true);
+            
+            
+            }
+            	
+            
+        }
+	
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+        
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
